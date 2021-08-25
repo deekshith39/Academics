@@ -1,0 +1,50 @@
+ create table student1(
+ regno varchar2(10),
+ sname varchar2(10),
+ major varchar2(5),
+ bdate date,
+ primary key(regno));
+ 
+ create table course(
+ courseid number(5),
+ cname varchar2(10),
+ dept varchar2(5),
+ primary key(courseid));
+ 
+ create table text(
+ isbn number(10),
+ booktitle varchar2(10),
+ publisher varchar2(10),
+ author varchar2(10),
+ primary key(isbn));
+ 
+ 
+create table adoption(
+courseid number(5),
+isbn number(10),
+sem number(5),
+primary key(courseid,isbn),
+foreign key(courseid) REFERENCES course(courseid), 
+foreign key(isbn) references text(isbn));
+
+create table enroll (
+regno varchar2(10),
+courseid number(5),
+sem number(5),
+marks number(5),
+primary key(regno,courseid),
+foreign key (regno) references student1(regno),
+foreign key (courseid) references course(courseid));
+
+insert into student1 values('&regno','&sanme','&major','&bdate');
+insert into course values('&courseid','&cname','&dept');
+insert into text values(&isbn,'&booktitle','&publisher','&author');
+insert into adoption values(&courseid,&sem,&isbn);
+insert into enroll values('&regno',&courseid,&sem,&marks);
+select * from student1;
+select * from course;
+select * from text;
+select * from adoption;
+select * from enroll;
+select b.courseid,t.isbn,t.book_title from adoption b,text t,course c where c.courseid=b.courseid and c.deptid='CSE' and b.isbn=t.isbn and c.courseid in (select courseid from (select courseid from adoption group by courseid,isbn) group by courseid having count(*)>=2) order by t.book_title;
+ select distinct c.deptid from course c where not exists ((select b.isbn from adoption b,course c1 where c1.courseid=b.courseid and c1.deptid=c.deptid) minus (select isbn from text where publisher='PHI')) and exists (select b.isbn from adoption b,course c1 where c1.courseid=b.courseid and c1.deptid=c.deptid);

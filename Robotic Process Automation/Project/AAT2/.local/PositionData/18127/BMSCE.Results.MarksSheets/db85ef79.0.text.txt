@@ -1,0 +1,21 @@
+6/13/2021
+
+5TH SEMESTER COMPUTER SCIENCE AND ENGINEERING PROVISIONAL RESULTS --JAN 2021
+
+              USN : 1BM18CS150                                                  
+              Student Name : ANKIT KESAR                                        
+SubjectCode   SubjectName                               CIE   SEE TOTAL   GRADES
+20CS5PCAIP    Artificial Intelligence                   47    70 82       A     
+20CS5PCCON    Computer Networks                         48    63 80       A     
+20CS5PCUSP    Unix Shell and System Programming         50    85 93       S     
+20CS5PCSEG    Software Engineering                      40    52 66       B     
+20CS5HSSPM    Software Project Management and Finance   45    56 73       B     
+20CS5PEADS    Advanced Data Structures                  49    72 85       A     
+20CS5PEIOT    Internet of Things                        -     - -         -     
+20CS5PEAAG    Advanced Algorithms                       43    67 77       A     
+20CS5PWPW3    Project Work-3                            46    48 94       S     
+20CS5NCNC5    Making Videos with Social Message         -     - -         PP    
+
+Note: This is a computer generated Statement of Marks for information of the candidate.
+
+1/1

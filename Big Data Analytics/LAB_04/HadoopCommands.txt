@@ -1,0 +1,77 @@
+
+
+#Hadoop Version
+
+hduser@psd-VirtualBox:~$ hadoop version
+
+Hadoop 2.6.0
+Subversion https://git-wip-us.apache.org/repos/asf/hadoop.git -r e3496499ecb8d220fba99dc5ed4c99c8f9e33bb1
+Compiled by jenkins on 2014-11-13T21:10Z
+Compiled with protoc 2.5.0
+From source with checksum 18e43357c8f927c0695f1e9522859d6a
+This command was run using /usr/local/hadoop/share/hadoop/common/hadoop-common-2.6.0.jar
+
+
+#Creating a directory
+
+hduser@psd-VirtualBox:~$ hadoop fs -mkdir /sample1
+
+
+#Listing files in directory
+
+hadoop fs -ls /
+
+Found 2 items
+drwxr-xr-x   - hduser supergroup          0 2021-04-19 14:07 /sample
+drwxr-xr-x   - hduser supergroup          0 2021-04-19 14:29 /sample1
+
+
+
+#Copying file from local system to HDFS
+
+hduser@psd-VirtualBox:~$ hadoop fs -put testfile.txt /sample
+
+
+
+#Listing the files recursively
+
+hadoop fs -ls -R /
+
+drwxr-xr-x   - hduser supergroup          0 2021-04-19 15:03 /sample
+-rw-r--r--   1 hduser supergroup          6 2021-04-19 15:03 /sample/testfile.txt
+drwxr-xr-x   - hduser supergroup          0 2021-04-19 14:29 /sample1
+
+
+
+#Copying file from HDFS to local system
+
+hduser@psd-VirtualBox:~$ hadoop fs -get /sample/testfile.txt newfile.txt
+
+
+
+#Removing a directory
+
+hduser@psd-VirtualBox:~$ hadoop fs -rm -r /sample1
+
+Deleted /sample1
+
+
+
+#displaying the content of a file
+
+hduser@psd-VirtualBox:~$ hadoop fs -cat /sample/testfile.txt
+
+BMSCE
+
+
+
+#touch command 
+
+hduser@psd-VirtualBox:~$ hadoop fs -touchz /sample/test2.txt
+
+
+
+#Copying a file from local system to HDFS using 'copyFromLocal' command
+
+hduser@psd-VirtualBox:~$ hadoop fs -copyFromLocal testfile.txt /
+

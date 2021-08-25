@@ -1,0 +1,182 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Sequence" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="539.2,2654.4" sap2010:WorkflowViewState.IdRef="Sequence_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:p="http://schemas.uipath.com/workflow/activities/intelligentocr" xmlns:p1="http://schemas.uipath.com/workflow/activities/intelligentocr/extraction" xmlns:p2="http://schemas.uipath.com/workflow/activities/document-processing-contracts/extraction" xmlns:p3="http://schemas.uipath.com/workflow/activities/document-processing-contracts/results" xmlns:p4="http://schemas.uipath.com/workflow/activities/document-processing-contracts/dom" xmlns:p5="http://schemas.uipath.com/workflow/activities/document-processing-contracts/taxonomy" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing" xmlns:sd1="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uoa="clr-namespace:UiPath.OmniPage.Activities;assembly=UiPath.OmniPage.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="29">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.Taxonomy</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.Dom</x:String>
+      <x:String>UiPath.Vision.OCR</x:String>
+      <x:String>UiPath.OCR.Contracts</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.Results</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.DataExtraction</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Excel</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="20">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.DocumentProcessing.Contracts</AssemblyReference>
+      <AssemblyReference>UiPath.Vision.Core</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Contracts</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Sequence" sap:VirtualizedContainerService.HintSize="596,2332.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="p5:DocumentTaxonomy" Name="taxonomy" />
+      <Variable x:TypeArguments="x:String" Default="D:\6th Sem\Robotic Process Automation\Project\" Name="strDocumentPath" />
+      <Variable x:TypeArguments="x:String" Name="strDocumentText" />
+      <Variable x:TypeArguments="p4:Document" Name="DOM" />
+      <Variable x:TypeArguments="p3:ExtractionResult" Name="extractionResults" />
+      <Variable x:TypeArguments="sd1:DataSet" Name="dataset" />
+      <Variable x:TypeArguments="sd1:DataTable" Name="dtOutput" />
+      <Variable x:TypeArguments="x:String" Default="D:\6th Sem\Robotic Process Automation\Project\New Microsoft Excel Worksheet.xlsx" Name="strExcelPath" />
+      <Variable x:TypeArguments="sd1:DataTable" Name="dtFinal" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <p:LoadTaxonomy DisplayName="Load Taxonomy" sap:VirtualizedContainerService.HintSize="554.4,105.6" sap2010:WorkflowViewState.IdRef="LoadTaxonomy_1" Taxonomy="[taxonomy]" />
+    <ui:BuildDataTable DataTable="[dtFinal]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="554.4,60" sap2010:WorkflowViewState.IdRef="BuildDataTable_2" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;  &lt;TableName /&gt;&#xD;&#xA;&lt;/NewDataSet&gt;" />
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="554.4,1838.4" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[Directory.GetFiles(strDocumentPath,&quot;*.pdf&quot;)]">
+      <ui:ForEach.Body>
+        <ActivityAction x:TypeArguments="x:String">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:String" Name="item" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="519.2,1704" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:BuildDataTable DataTable="[dtOutput]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="477.6,60" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;USN&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;  &lt;TableName /&gt;&#xD;&#xA;&lt;/NewDataSet&gt;" />
+            <p:DigitizeDocument DegreeOfParallelism="-1" DisplayName="Digitize Document" DocumentObjectModel="[DOM]" DocumentPath="[item]" DocumentText="[strDocumentText]" ForceApplyOCR="False" sap:VirtualizedContainerService.HintSize="477.6,297.6" sap2010:WorkflowViewState.IdRef="DigitizeDocument_1">
+              <p:DigitizeDocument.OCREngine>
+                <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd:Rectangle, x:String))">
+                  <ActivityFunc.Argument>
+                    <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+                  </ActivityFunc.Argument>
+                  <uoa:OmniPageOCR Language="{x:Null}" Output="{x:Null}" Profile="{x:Null}" Scale="{x:Null}" Text="{x:Null}" BundleType="Basic" ComputeSkewAngle="False" DisplayName="OmniPage OCR" ExtractWords="True" sap:VirtualizedContainerService.HintSize="312,22.4" sap2010:WorkflowViewState.IdRef="OmniPageOCR_1" Image="[Image]" />
+                </ActivityFunc>
+              </p:DigitizeDocument.OCREngine>
+            </p:DigitizeDocument>
+            <p1:DataExtractionScope ClassificationResult="{x:Null}" DisplayName="Data Extraction Scope" DocumentObjectModel="[DOM]" DocumentPath="[item]" DocumentText="[strDocumentText]" DocumentTypeId="BMSCE.Results.MarksSheets" ExtractionResult="[extractionResults]" FormatValuesIfPossible="True" sap:VirtualizedContainerService.HintSize="477.6,490.4" sap2010:WorkflowViewState.IdRef="DataExtractionScope_1" Taxonomy="[taxonomy]" TaxonomyConfiguration="{}{&quot;TaxonomyMappings&quot;:{&quot;UIdeed71e4f8694fab9676bac1d7b18127&quot;:{&quot;DocumentTypeMappings&quot;:{&quot;BMSCE.Results.MarksSheets&quot;:{&quot;FieldMappings&quot;:{&quot;BMSCE.Results.MarksSheets.USN&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;BMSCE.Results.MarksSheets.USN&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;BMSCE.Results.MarksSheets.MarksSheet&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;BMSCE.Results.MarksSheets.MarksSheet&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;BMSCE.Results.MarksSheets.MarksSheet.SubjectCode&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;BMSCE.Results.MarksSheets.MarksSheet.SubjectCode&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;BMSCE.Results.MarksSheets.MarksSheet.SubjectName&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;BMSCE.Results.MarksSheets.MarksSheet.SubjectName&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;BMSCE.Results.MarksSheets.MarksSheet.CIE&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;BMSCE.Results.MarksSheets.MarksSheet.CIE&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;BMSCE.Results.MarksSheets.MarksSheet.SEE&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;BMSCE.Results.MarksSheets.MarksSheet.SEE&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;BMSCE.Results.MarksSheets.MarksSheet.TOTAL&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;BMSCE.Results.MarksSheets.MarksSheet.TOTAL&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;BMSCE.Results.MarksSheets.MarksSheet.GRADES&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;BMSCE.Results.MarksSheets.MarksSheet.GRADES&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true}},&quot;ExtractorDocumentTypeId&quot;:null}}}},&quot;ExtractorMinimumConfidence&quot;:{&quot;UIdeed71e4f8694fab9676bac1d7b18127&quot;:&quot;0&quot;},&quot;ExtractorsAliases&quot;:{},&quot;DocumentTypeOptionsByExtractor&quot;:{&quot;UIdeed71e4f8694fab9676bac1d7b18127&quot;:[]}}">
+              <p1:DataExtractionScope.Extractors>
+                <p1:FormExtractor SerializedSignatureFields="{x:Null}" ApiKey="TRKsLXXCUegMPBBfOPiKk75VstYR4TTKRH4PbeZUhl5bNwUqpRT957BnyxNAx0QHxTI/bTfyD1m/sE0IFGbqdw==" DisplayName="Form Extractor" Endpoint="https://du.uipath.com/svc/formextractor" sap:VirtualizedContainerService.HintSize="233.6,164" sap2010:WorkflowViewState.IdRef="FormExtractor_1" MinOverlapPercentage="65" PersistenceId="UIdeed71e4f8694fab9676bac1d7b18127" SerializedSettings="{}{}" SerializedTemplates="[{&quot;DocumentTypeId&quot;:&quot;BMSCE.Results.MarksSheets&quot;,&quot;FormId&quot;:&quot;db85ef79&quot;,&quot;FormName&quot;:&quot;MarksSheets&quot;,&quot;OriginalFileExtension&quot;:&quot;pdf&quot;,&quot;Pages&quot;:[{&quot;Page&quot;:0,&quot;Size&quot;:[0.0,0.0,594.0,841.0],&quot;SkewAngle&quot;:0.0,&quot;Evidence&quot;:[{&quot;Text&quot;:&quot;5TH&quot;,&quot;Box&quot;:[33.4877,71.594,19.3711,13.7841]},{&quot;Text&quot;:&quot;SEMESTER&quot;,&quot;Box&quot;:[33.4877,93.4646,54.2686,13.7841]},{&quot;Text&quot;:&quot;COMPUTER&quot;,&quot;Box&quot;:[33.4877,150.226,58.122,13.7841]},{&quot;Text&quot;:&quot;SCIENCE&quot;,&quot;Box&quot;:[33.4877,210.8408,44.2908,13.7841]},{&quot;Text&quot;:&quot;AND&quot;,&quot;Box&quot;:[33.4877,257.6327,21.5867,13.7841]},{&quot;Text&quot;:&quot;ENGINEERING&quot;,&quot;Box&quot;:[33.4877,281.7122,71.9725,13.7841]},{&quot;Text&quot;:&quot;PROVISIONAL&quot;,&quot;Box&quot;:[33.4877,356.1842,70.3068,13.7841]},{&quot;Text&quot;:&quot;RESULTS&quot;,&quot;Box&quot;:[33.4877,428.9921,44.4987,13.7841]}],&quot;Fields&quot;:[{&quot;Field&quot;:&quot;BMSCE.Results.MarksSheets.USN&quot;,&quot;Box&quot;:[64.8663,277.6859,80.9006,11.6613]}],&quot;Tables&quot;:[{&quot;FieldId&quot;:&quot;BMSCE.Results.MarksSheets.MarksSheet&quot;,&quot;Headers&quot;:[{&quot;FieldId&quot;:&quot;BMSCE.Results.MarksSheets.MarksSheet.SubjectCode&quot;,&quot;Box&quot;:[0.0,0.0,0.0,0.0]},{&quot;FieldId&quot;:&quot;BMSCE.Results.MarksSheets.MarksSheet.SubjectName&quot;,&quot;Box&quot;:[0.0,0.0,0.0,0.0]},{&quot;FieldId&quot;:&quot;BMSCE.Results.MarksSheets.MarksSheet.CIE&quot;,&quot;Box&quot;:[0.0,0.0,0.0,0.0]},{&quot;FieldId&quot;:&quot;BMSCE.Results.MarksSheets.MarksSheet.SEE&quot;,&quot;Box&quot;:[0.0,0.0,0.0,0.0]},{&quot;FieldId&quot;:&quot;BMSCE.Results.MarksSheets.MarksSheet.TOTAL&quot;,&quot;Box&quot;:[0.0,0.0,0.0,0.0]},{&quot;FieldId&quot;:&quot;BMSCE.Results.MarksSheets.MarksSheet.GRADES&quot;,&quot;Box&quot;:[0.0,0.0,0.0,0.0]}],&quot;Cells&quot;:[{&quot;Row&quot;:0,&quot;Column&quot;:0,&quot;Box&quot;:[114.427,35.7129,94.0933,1.0933]},{&quot;Row&quot;:0,&quot;Column&quot;:1,&quot;Box&quot;:[114.427,129.8061,252.0,1.0933]},{&quot;Row&quot;:0,&quot;Column&quot;:2,&quot;Box&quot;:[114.427,381.8061,30.0,1.0933]},{&quot;Row&quot;:0,&quot;Column&quot;:3,&quot;Box&quot;:[114.427,411.8061,30.5963,1.0933]},{&quot;Row&quot;:0,&quot;Column&quot;:4,&quot;Box&quot;:[114.427,442.4025,53.4037,1.0933]},{&quot;Row&quot;:0,&quot;Column&quot;:5,&quot;Box&quot;:[114.427,495.8061,17.0,1.0933]},{&quot;Row&quot;:1,&quot;Column&quot;:0,&quot;Box&quot;:[115.5202,35.7129,94.0933,15.0]},{&quot;Row&quot;:1,&quot;Column&quot;:1,&quot;Box&quot;:[115.5202,129.8061,252.0,15.0]},{&quot;Row&quot;:1,&quot;Column&quot;:2,&quot;Box&quot;:[115.5202,381.8061,30.0,15.0]},{&quot;Row&quot;:1,&quot;Column&quot;:3,&quot;Box&quot;:[115.5202,411.8061,30.5963,15.0]},{&quot;Row&quot;:1,&quot;Column&quot;:4,&quot;Box&quot;:[115.5202,442.4025,53.4037,15.0]},{&quot;Row&quot;:1,&quot;Column&quot;:5,&quot;Box&quot;:[115.5202,495.8061,17.0,15.0]},{&quot;Row&quot;:2,&quot;Column&quot;:0,&quot;Box&quot;:[130.5202,35.7129,94.0933,16.0]},{&quot;Row&quot;:2,&quot;Column&quot;:1,&quot;Box&quot;:[130.5202,129.8061,252.0,16.0]},{&quot;Row&quot;:2,&quot;Column&quot;:2,&quot;Box&quot;:[130.5202,381.8061,30.0,16.0]},{&quot;Row&quot;:2,&quot;Column&quot;:3,&quot;Box&quot;:[130.5202,411.8061,30.5963,16.0]},{&quot;Row&quot;:2,&quot;Column&quot;:4,&quot;Box&quot;:[130.5202,442.4025,53.4037,16.0]},{&quot;Row&quot;:2,&quot;Column&quot;:5,&quot;Box&quot;:[130.5202,495.8061,17.0,16.0]},{&quot;Row&quot;:3,&quot;Column&quot;:0,&quot;Box&quot;:[146.5202,35.7129,94.0933,16.0]},{&quot;Row&quot;:3,&quot;Column&quot;:1,&quot;Box&quot;:[146.5202,129.8061,252.0,16.0]},{&quot;Row&quot;:3,&quot;Column&quot;:2,&quot;Box&quot;:[146.5202,381.8061,30.0,16.0]},{&quot;Row&quot;:3,&quot;Column&quot;:3,&quot;Box&quot;:[146.5202,411.8061,30.5963,16.0]},{&quot;Row&quot;:3,&quot;Column&quot;:4,&quot;Box&quot;:[146.5202,442.4025,53.4037,16.0]},{&quot;Row&quot;:3,&quot;Column&quot;:5,&quot;Box&quot;:[146.5202,495.8061,17.0,16.0]},{&quot;Row&quot;:4,&quot;Column&quot;:0,&quot;Box&quot;:[162.5202,35.7129,94.0933,18.0]},{&quot;Row&quot;:4,&quot;Column&quot;:1,&quot;Box&quot;:[162.5202,129.8061,252.0,18.0]},{&quot;Row&quot;:4,&quot;Column&quot;:2,&quot;Box&quot;:[162.5202,381.8061,30.0,18.0]},{&quot;Row&quot;:4,&quot;Column&quot;:3,&quot;Box&quot;:[162.5202,411.8061,30.5963,18.0]},{&quot;Row&quot;:4,&quot;Column&quot;:4,&quot;Box&quot;:[162.5202,442.4025,53.4037,18.0]},{&quot;Row&quot;:4,&quot;Column&quot;:5,&quot;Box&quot;:[162.5202,495.8061,17.0,18.0]},{&quot;Row&quot;:5,&quot;Column&quot;:0,&quot;Box&quot;:[180.5202,35.7129,94.0933,16.0]},{&quot;Row&quot;:5,&quot;Column&quot;:1,&quot;Box&quot;:[180.5202,129.8061,252.0,16.0]},{&quot;Row&quot;:5,&quot;Column&quot;:2,&quot;Box&quot;:[180.5202,381.8061,30.0,16.0]},{&quot;Row&quot;:5,&quot;Column&quot;:3,&quot;Box&quot;:[180.5202,411.8061,30.5963,16.0]},{&quot;Row&quot;:5,&quot;Column&quot;:4,&quot;Box&quot;:[180.5202,442.4025,53.4037,16.0]},{&quot;Row&quot;:5,&quot;Column&quot;:5,&quot;Box&quot;:[180.5202,495.8061,17.0,16.0]},{&quot;Row&quot;:6,&quot;Column&quot;:0,&quot;Box&quot;:[196.5202,35.7129,94.0933,16.0]},{&quot;Row&quot;:6,&quot;Column&quot;:1,&quot;Box&quot;:[196.5202,129.8061,252.0,16.0]},{&quot;Row&quot;:6,&quot;Column&quot;:2,&quot;Box&quot;:[196.5202,381.8061,30.0,16.0]},{&quot;Row&quot;:6,&quot;Column&quot;:3,&quot;Box&quot;:[196.5202,411.8061,30.5963,16.0]},{&quot;Row&quot;:6,&quot;Column&quot;:4,&quot;Box&quot;:[196.5202,442.4025,53.4037,16.0]},{&quot;Row&quot;:6,&quot;Column&quot;:5,&quot;Box&quot;:[196.5202,495.8061,17.0,16.0]},{&quot;Row&quot;:7,&quot;Column&quot;:0,&quot;Box&quot;:[212.5202,35.7129,94.0933,16.0]},{&quot;Row&quot;:7,&quot;Column&quot;:1,&quot;Box&quot;:[212.5202,129.8061,252.0,16.0]},{&quot;Row&quot;:7,&quot;Column&quot;:2,&quot;Box&quot;:[212.5202,381.8061,30.0,16.0]},{&quot;Row&quot;:7,&quot;Column&quot;:3,&quot;Box&quot;:[212.5202,411.8061,30.5963,16.0]},{&quot;Row&quot;:7,&quot;Column&quot;:4,&quot;Box&quot;:[212.5202,442.4025,53.4037,16.0]},{&quot;Row&quot;:7,&quot;Column&quot;:5,&quot;Box&quot;:[212.5202,495.8061,17.0,16.0]},{&quot;Row&quot;:8,&quot;Column&quot;:0,&quot;Box&quot;:[228.5202,35.7129,94.0933,18.0]},{&quot;Row&quot;:8,&quot;Column&quot;:1,&quot;Box&quot;:[228.5202,129.8061,252.0,18.0]},{&quot;Row&quot;:8,&quot;Column&quot;:2,&quot;Box&quot;:[228.5202,381.8061,30.0,18.0]},{&quot;Row&quot;:8,&quot;Column&quot;:3,&quot;Box&quot;:[228.5202,411.8061,30.5963,18.0]},{&quot;Row&quot;:8,&quot;Column&quot;:4,&quot;Box&quot;:[228.5202,442.4025,53.4037,18.0]},{&quot;Row&quot;:8,&quot;Column&quot;:5,&quot;Box&quot;:[228.5202,495.8061,17.0,18.0]},{&quot;Row&quot;:9,&quot;Column&quot;:0,&quot;Box&quot;:[246.5202,35.7129,94.0933,16.0]},{&quot;Row&quot;:9,&quot;Column&quot;:1,&quot;Box&quot;:[246.5202,129.8061,252.0,16.0]},{&quot;Row&quot;:9,&quot;Column&quot;:2,&quot;Box&quot;:[246.5202,381.8061,30.0,16.0]},{&quot;Row&quot;:9,&quot;Column&quot;:3,&quot;Box&quot;:[246.5202,411.8061,30.5963,16.0]},{&quot;Row&quot;:9,&quot;Column&quot;:4,&quot;Box&quot;:[246.5202,442.4025,53.4037,16.0]},{&quot;Row&quot;:9,&quot;Column&quot;:5,&quot;Box&quot;:[246.5202,495.8061,17.0,16.0]},{&quot;Row&quot;:10,&quot;Column&quot;:0,&quot;Box&quot;:[262.5202,35.7129,94.0933,14.0]},{&quot;Row&quot;:10,&quot;Column&quot;:1,&quot;Box&quot;:[262.5202,129.8061,252.0,14.0]},{&quot;Row&quot;:10,&quot;Column&quot;:2,&quot;Box&quot;:[262.5202,381.8061,30.0,14.0]},{&quot;Row&quot;:10,&quot;Column&quot;:3,&quot;Box&quot;:[262.5202,411.8061,30.5963,14.0]},{&quot;Row&quot;:10,&quot;Column&quot;:4,&quot;Box&quot;:[262.5202,442.4025,53.4037,14.0]},{&quot;Row&quot;:10,&quot;Column&quot;:5,&quot;Box&quot;:[262.5202,495.8061,17.0,14.0]},{&quot;Row&quot;:11,&quot;Column&quot;:0,&quot;Box&quot;:[276.5202,35.7129,94.0933,2.2589]},{&quot;Row&quot;:11,&quot;Column&quot;:1,&quot;Box&quot;:[276.5202,129.8061,252.0,2.2589]},{&quot;Row&quot;:11,&quot;Column&quot;:2,&quot;Box&quot;:[276.5202,381.8061,30.0,2.2589]},{&quot;Row&quot;:11,&quot;Column&quot;:3,&quot;Box&quot;:[276.5202,411.8061,30.5963,2.2589]},{&quot;Row&quot;:11,&quot;Column&quot;:4,&quot;Box&quot;:[276.5202,442.4025,53.4037,2.2589]},{&quot;Row&quot;:11,&quot;Column&quot;:5,&quot;Box&quot;:[276.5202,495.8061,17.0,2.2589]}]}]}],&quot;AnchorBasedConfiguration&quot;:{&quot;AnchorBasedFieldConfiguration&quot;:[]}}]" Timeout="100000">
+                  <p1:FormExtractor.DocumentBounds>
+                    <InArgument x:TypeArguments="p3:ResultsDocumentBounds">
+                      <DelegateArgumentValue x:TypeArguments="p3:ResultsDocumentBounds">
+                        <DelegateInArgument x:TypeArguments="p3:ResultsDocumentBounds" Name="DocumentBounds" />
+                      </DelegateArgumentValue>
+                    </InArgument>
+                  </p1:FormExtractor.DocumentBounds>
+                  <p1:FormExtractor.DocumentObjectModel>
+                    <InArgument x:TypeArguments="p4:Document">
+                      <DelegateArgumentValue x:TypeArguments="p4:Document">
+                        <DelegateInArgument x:TypeArguments="p4:Document" Name="DocumentObjectModel" />
+                      </DelegateArgumentValue>
+                    </InArgument>
+                  </p1:FormExtractor.DocumentObjectModel>
+                  <p1:FormExtractor.DocumentPath>
+                    <InArgument x:TypeArguments="x:String">
+                      <DelegateArgumentValue x:TypeArguments="x:String">
+                        <DelegateInArgument x:TypeArguments="x:String" Name="DocumentPath" />
+                      </DelegateArgumentValue>
+                    </InArgument>
+                  </p1:FormExtractor.DocumentPath>
+                  <p1:FormExtractor.DocumentText>
+                    <InArgument x:TypeArguments="x:String">
+                      <DelegateArgumentValue x:TypeArguments="x:String">
+                        <DelegateInArgument x:TypeArguments="x:String" Name="DocumentText" />
+                      </DelegateArgumentValue>
+                    </InArgument>
+                  </p1:FormExtractor.DocumentText>
+                  <p1:FormExtractor.ExtractorDocumentType>
+                    <InArgument x:TypeArguments="p2:ExtractorDocumentType">
+                      <DelegateArgumentValue x:TypeArguments="p2:ExtractorDocumentType">
+                        <DelegateInArgument x:TypeArguments="p2:ExtractorDocumentType" Name="ExtractorDocumentType" />
+                      </DelegateArgumentValue>
+                    </InArgument>
+                  </p1:FormExtractor.ExtractorDocumentType>
+                  <p1:FormExtractor.ExtractorResult>
+                    <OutArgument x:TypeArguments="p2:ExtractorResult">
+                      <DelegateArgumentReference x:TypeArguments="p2:ExtractorResult">
+                        <DelegateOutArgument x:TypeArguments="p2:ExtractorResult" Name="ExtractorResult" />
+                      </DelegateArgumentReference>
+                    </OutArgument>
+                  </p1:FormExtractor.ExtractorResult>
+                </p1:FormExtractor>
+              </p1:DataExtractionScope.Extractors>
+            </p1:DataExtractionScope>
+            <p1:ExportExtractionResults DataSet="[dataset]" DisplayName="Export Extraction Results" ExtractionResult="[extractionResults]" sap:VirtualizedContainerService.HintSize="477.6,176.8" sap2010:WorkflowViewState.IdRef="ExportExtractionResults_1" IncludeConfidence="False" IncludeOCRConfidence="False" />
+            <ui:MergeDataTable Destination="[dtOutput]" DisplayName="Merge Data Table" sap:VirtualizedContainerService.HintSize="477.6,22.4" sap2010:WorkflowViewState.IdRef="MergeDataTable_1" MissingSchemaAction="Add" Source="[dataset.Tables(2)]" />
+            <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[dtOutput]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="477.6,301.6" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+              <ui:ForEachRow.Body>
+                <ActivityAction x:TypeArguments="sd1:DataRow">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="sd1:DataRow" Name="row" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="304,152.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Object">[row.Item("USN")]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">[dataset.Tables(0).rows(0).Item("USN").ToString]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEachRow.Body>
+            </ui:ForEachRow>
+            <ui:MergeDataTable Destination="[dtFinal]" DisplayName="Merge Data Table" sap:VirtualizedContainerService.HintSize="477.6,22.4" sap2010:WorkflowViewState.IdRef="MergeDataTable_2" MissingSchemaAction="Add" Source="[dtOutput]" />
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEach.Body>
+    </ui:ForEach>
+    <ui:WriteRange StartingCell="{x:Null}" AddHeaders="True" DataTable="[dtFinal]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="554.4,116" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Sheet1" WorkbookPath="[strExcelPath]" />
+  </Sequence>
+</Activity>

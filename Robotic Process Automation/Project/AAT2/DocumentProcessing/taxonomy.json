@@ -1,0 +1,257 @@
+﻿{
+  "DataContractVersion": "1.1",
+  "DocumentTypes": [
+    {
+      "DocumentTypeId": "BMSCE.Results.MarksSheets",
+      "Group": "BMSCE",
+      "Category": "Results",
+      "Name": "MarksSheets",
+      "OptionalUniqueIdentifier": null,
+      "TypeField": {
+        "FieldId": "BMSCE.Results.MarksSheets.DocumentType",
+        "FieldName": "Document Type"
+      },
+      "Fields": [
+        {
+          "FieldId": "BMSCE.Results.MarksSheets.USN",
+          "FieldName": "USN",
+          "IsMultiValue": false,
+          "Type": "Text",
+          "DeriveFieldsFormat": "",
+          "Components": [],
+          "SetValues": [],
+          "Metadata": [
+            {
+              "Key": "RequiresReference",
+              "Value": "true"
+            }
+          ]
+        },
+        {
+          "FieldId": "BMSCE.Results.MarksSheets.MarksSheet",
+          "FieldName": "MarksSheet",
+          "IsMultiValue": false,
+          "Type": "Table",
+          "DeriveFieldsFormat": "",
+          "Components": [
+            {
+              "FieldId": "BMSCE.Results.MarksSheets.MarksSheet.SubjectCode",
+              "FieldName": "Subject Code",
+              "IsMultiValue": false,
+              "Type": "Text",
+              "DeriveFieldsFormat": "",
+              "Components": [],
+              "SetValues": [],
+              "Metadata": [
+                {
+                  "Key": "RequiresReference",
+                  "Value": "true"
+                }
+              ]
+            },
+            {
+              "FieldId": "BMSCE.Results.MarksSheets.MarksSheet.SubjectName",
+              "FieldName": "Subject Name",
+              "IsMultiValue": false,
+              "Type": "Text",
+              "DeriveFieldsFormat": "",
+              "Components": [],
+              "SetValues": [],
+              "Metadata": [
+                {
+                  "Key": "RequiresReference",
+                  "Value": "true"
+                }
+              ]
+            },
+            {
+              "FieldId": "BMSCE.Results.MarksSheets.MarksSheet.CIE",
+              "FieldName": "CIE",
+              "IsMultiValue": false,
+              "Type": "Text",
+              "DeriveFieldsFormat": "",
+              "Components": [],
+              "SetValues": [],
+              "Metadata": [
+                {
+                  "Key": "RequiresReference",
+                  "Value": "true"
+                }
+              ]
+            },
+            {
+              "FieldId": "BMSCE.Results.MarksSheets.MarksSheet.SEE",
+              "FieldName": "SEE",
+              "IsMultiValue": false,
+              "Type": "Text",
+              "DeriveFieldsFormat": "",
+              "Components": [],
+              "SetValues": [],
+              "Metadata": [
+                {
+                  "Key": "RequiresReference",
+                  "Value": "true"
+                }
+              ]
+            },
+            {
+              "FieldId": "BMSCE.Results.MarksSheets.MarksSheet.TOTAL",
+              "FieldName": "TOTAL",
+              "IsMultiValue": false,
+              "Type": "Text",
+              "DeriveFieldsFormat": "",
+              "Components": [],
+              "SetValues": [],
+              "Metadata": [
+                {
+                  "Key": "RequiresReference",
+                  "Value": "true"
+                }
+              ]
+            },
+            {
+              "FieldId": "BMSCE.Results.MarksSheets.MarksSheet.GRADES",
+              "FieldName": "GRADES",
+              "IsMultiValue": false,
+              "Type": "Text",
+              "DeriveFieldsFormat": "",
+              "Components": [],
+              "SetValues": [],
+              "Metadata": [
+                {
+                  "Key": "RequiresReference",
+                  "Value": "true"
+                }
+              ]
+            }
+          ],
+          "SetValues": [],
+          "Metadata": [
+            {
+              "Key": "RequiresReference",
+              "Value": "true"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "Groups": [
+    {
+      "Name": "BMSCE",
+      "Categories": [
+        "Results"
+      ]
+    }
+  ],
+  "SupportedLanguages": [
+    {
+      "Name": "Undetermined Language",
+      "Code": "und"
+    },
+    {
+      "Name": "Bulgarian",
+      "Code": "bul"
+    },
+    {
+      "Name": "Cantonese",
+      "Code": "yue"
+    },
+    {
+      "Name": "Danish",
+      "Code": "dan"
+    },
+    {
+      "Name": "Dutch",
+      "Code": "nld"
+    },
+    {
+      "Name": "English",
+      "Code": "eng"
+    },
+    {
+      "Name": "French",
+      "Code": "fra"
+    },
+    {
+      "Name": "Georgian",
+      "Code": "kat"
+    },
+    {
+      "Name": "German",
+      "Code": "deu"
+    },
+    {
+      "Name": "Greek",
+      "Code": "ell"
+    },
+    {
+      "Name": "Hebrew",
+      "Code": "heb"
+    },
+    {
+      "Name": "Hindi",
+      "Code": "hin"
+    },
+    {
+      "Name": "Italian",
+      "Code": "ita"
+    },
+    {
+      "Name": "Japanese",
+      "Code": "jpn"
+    },
+    {
+      "Name": "Korean",
+      "Code": "kor"
+    },
+    {
+      "Name": "Macedonian",
+      "Code": "mkd"
+    },
+    {
+      "Name": "Mandarin",
+      "Code": "zho"
+    },
+    {
+      "Name": "Marathi",
+      "Code": "mar"
+    },
+    {
+      "Name": "Norwegian",
+      "Code": "nor"
+    },
+    {
+      "Name": "Polish",
+      "Code": "pol"
+    },
+    {
+      "Name": "Portuguese",
+      "Code": "por"
+    },
+    {
+      "Name": "Romanian",
+      "Code": "ron"
+    },
+    {
+      "Name": "Russian",
+      "Code": "rus"
+    },
+    {
+      "Name": "Serbian",
+      "Code": "srp"
+    },
+    {
+      "Name": "Spanish",
+      "Code": "spa"
+    },
+    {
+      "Name": "Swedish",
+      "Code": "swe"
+    },
+    {
+      "Name": "Telugu",
+      "Code": "tel"
+    }
+  ]
+}
